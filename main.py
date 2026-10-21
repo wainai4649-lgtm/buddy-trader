@@ -104,5 +104,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-BUDDY TRADER 初期コード完成 
+ 
