@@ -102,7 +102,7 @@ def main():
     print("Scores are screening indicators, not forecasts or buy recommendations.")
 import os
 import smtplib
-from email.message import EmailMessage
+from email.message import 
 
 def send_email():
     sender = os.environ["EMAIL_ADDRESS"]
@@ -131,30 +131,7 @@ def send_email():
 if __name__ == "__main__":
     main()
     send_email()
-def send_email():
-    sender = os.environ["EMAIL_ADDRESS"]
-    password = os.environ["EMAIL_PASSWORD"]
-    recipient = "wainai4649@gmail.com"
 
-    msg = EmailMessage()
-    msg["Subject"] = "BUDDY TRADER 株式分析結果"
-    msg["From"] = sender
-    msg["To"] = recipient
 
-    with open("buddy_trader_report.csv", "rb") as file:
-        msg.add_attachment(
-            file.read(),
-            maintype="text",
-            subtype="csv",
-            filename="buddy_trader_report.csv"
-        )
 
-    msg.set_content("株式分析結果をCSVファイルで送ります。")
 
-    with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
-        smtp.login(sender, password)
-        smtp.send_message(msg)
-
-if __name__ == "__main__":
-    main()
-    send_email()
