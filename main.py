@@ -100,7 +100,27 @@ def main():
         print(item["ticker"], item["short_term_score"], item["name"])
     print(f"\nSaved: {filename}")
     print("Scores are screening indicators, not forecasts or buy recommendations.")
+import os
+import smtplib
+from email.message import EmailMessage
 
+def send_email():
+    sender = os.environ["EMAIL_ADDRESS"]
+    password = os.environ["EMAIL_PASSWORD"]
+    recipient = os.environ["EMAIL_TO"]
+
+    msg = EmailMessage()
+    msg["Subject"] = "BUDDY TRADER 株式分析結果"
+    msg["From"] = sender
+    msg["To"] = recipient
+    msg.set_content(
+        "株式スクリーニングが完了しました。\n"
+        "分析結果はGitHub Actionsのログを確認してください。"
+    )
+
+    with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
+        smtp.login(sender, password)
+        smtp.send_message(msg)
 
 if __name__ == "__main__":
     main()
