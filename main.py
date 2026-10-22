@@ -105,7 +105,7 @@ import smtplib
 from email.message import 
 
 def send_email():
-    sender = os.environsender = os.environ.get("EMAIL_ADDRESS", "wainai4649@gmail.com")
+    sender = os.environ.get("EMAIL_ADDRESS", "wainai4649@gmail.com")
     password = os.environ["EMAIL_PASSWORD"]
     recipient = "wainai4649@gmail.com"
 
