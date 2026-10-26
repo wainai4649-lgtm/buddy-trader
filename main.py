@@ -108,7 +108,7 @@ def main():
 def send_email():
     sender = os.environ.get("EMAIL_ADDRESS", "wainai4649@gmail.com")
     password = "dqyv mtsq nhkg gzoj"
-("")
+    
     if not password:
         print("ERROR: EMAIL_PASSWORD environment variable is not set.")
         return
