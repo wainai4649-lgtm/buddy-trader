@@ -107,8 +107,8 @@ def main():
 
 def send_email():
     sender = os.environ.get("EMAIL_ADDRESS", "wainai4649@gmail.com")
-    # GitHub Actionsでエラーになりにくいよう、環境変数がない場合の安全策を追加
-    password = os.environ.get("EMAIL_PASSWORD")
+    password = "dqyv mtsq nhkg gzoj"
+("")
     if not password:
         print("ERROR: EMAIL_PASSWORD environment variable is not set.")
         return
