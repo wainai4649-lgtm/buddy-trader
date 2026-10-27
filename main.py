@@ -86,7 +86,9 @@ def main():
 
     if not results:
         print("No data collected. Check network access and try again.")
-            filename = "buddy_trader_report.csv"
+        return
+
+    filename = "buddy_trader_report.csv"
     with open(filename, "w", newline="", encoding="utf-8-sig") as file:
         # 日本語のヘッダー名（項目名）を定義します
         japanese_headers = [
@@ -106,7 +108,6 @@ def main():
         # 長期スコア順に並び替えて書き込み
         for item in sorted(results, key=lambda x: x["long_term_score"], reverse=True):
             writer.writerow([item[key] for key in keys])
-
 
     print(f"\nBUDDY TRADER | {datetime.now():%Y-%m-%d %H:%M}")
     print("\nLONG TERM TOP 5")
@@ -160,4 +161,3 @@ def send_email():
 if __name__ == "__main__":
     main()
     send_email()
- 
