@@ -87,12 +87,12 @@ def main():
     if not results:
         print("No data collected. Check network access and try again.")
         return
-
     filename = "buddy_trader_report.csv"
     with open(filename, "w", newline="", encoding="utf-8-sig") as file:
         writer = csv.DictWriter(file, fieldnames=list(results[0]))
         writer.writeheader()
         writer.writerows(sorted(results, key=lambda x: x["long_term_score"], reverse=True))
+
 
     print(f"\nBUDDY TRADER | {datetime.now():%Y-%m-%d %H:%M}")
     print("\nLONG TERM TOP 5")
