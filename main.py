@@ -86,12 +86,26 @@ def main():
 
     if not results:
         print("No data collected. Check network access and try again.")
-        return
-    filename = "buddy_trader_report.csv"
+            filename = "buddy_trader_report.csv"
     with open(filename, "w", newline="", encoding="utf-8-sig") as file:
-        writer = csv.DictWriter(file, fieldnames=list(results[0]))
-        writer.writeheader()
-        writer.writerows(sorted(results, key=lambda x: x["long_term_score"], reverse=True))
+        # 日本語のヘッダー名（項目名）を定義します
+        japanese_headers = [
+            "ティッカー", "銘柄名", "株価(円)", "売上高成長率(%)", 
+            "営業利益率(%)", "PER", "出来高比率", "20日変化率(%)", 
+            "長期スコア", "短期スコア"
+        ]
+        
+        writer = csv.writer(file)
+        writer.writerow(japanese_headers)
+        
+        # データの並び順を定義
+        keys = ["ticker", "name", "price_jpy", "revenue_growth_pct", 
+                "operating_margin_pct", "pe", "volume_ratio", "change20_pct", 
+                "long_term_score", "short_term_score"]
+        
+        # 長期スコア順に並び替えて書き込み
+        for item in sorted(results, key=lambda x: x["long_term_score"], reverse=True):
+            writer.writerow([item[key] for key in keys])
 
 
     print(f"\nBUDDY TRADER | {datetime.now():%Y-%m-%d %H:%M}")
