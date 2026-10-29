@@ -208,7 +208,7 @@ def send_email(email_text):
 
     print("Sending email...")
     try:
-        with smtplib.SMTP_SSL("://gmail.com", 465) as smtp:
+        with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
             smtp.login(sender, password)
             smtp.send_message(msg)
         print("Email sent successfully!")
