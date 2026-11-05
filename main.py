@@ -173,3 +173,4 @@ if __name__ == "__main__":
         print(morning_message)
         webhook_url = os.environ.get("NOTIFY_WEBHOOK_URL")
         if webhook_url: requests.post(webhook_url, json={"content": morning_message})
+            
